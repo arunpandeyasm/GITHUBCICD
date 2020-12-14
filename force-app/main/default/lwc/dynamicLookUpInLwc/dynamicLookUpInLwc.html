@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="DynamicLookUp">
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item padding="horizontal-small">               
+                    <lightning-input
+                        name="enter-search"
+                        label="Search when user hits the 'enter' key"
+                        type="search"
+                        onchange={handleKeyUp}
+                    ></lightning-input>
+                    <template if:true={searchData}>
+                        <template for:each={searchData.data} for:item="search">
+                            <!--
+                            <div key={search.Id} id={search.Id} onclick={handleClick}>
+                                <a id={search.Id}>{search.Name}</a>
+                            </div>-->
+                            <c-generic-Lookup-Click  returnrecords={search} key={search.Id} ongetid={handleClick}></c-generic-Lookup-Click>         
+                        </template>
+                    </template>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

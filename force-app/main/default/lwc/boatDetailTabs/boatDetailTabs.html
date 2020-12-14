@@ -1,0 +1,41 @@
+<template>
+
+    <lightning-tabset>
+        <lightning-tab label={label.labelFullDetails}>
+            <template if:true={wiredRecord.data}>
+            <lightning-card icon-name={detailsTabIconName} title={boatName}>
+                <lightning-button slot="actions" label={label.labelFullDetails}
+                    onclick={navigateToRecordViewPage}>
+                </lightning-button>
+            
+            
+               <lightning-record-view-form record-id={boatId} object-api-name="Boat__c" density="compact">
+                <div class="slds-box">
+                    <lightning-output-field field-name="BoatType__c">
+                    </lightning-output-field>
+                    <lightning-output-field field-name="Length__c">
+                    </lightning-output-field>
+                    <lightning-output-field field-name="Price__c">
+                    </lightning-output-field>
+                    <lightning-output-field field-name="Description__c">
+                    </lightning-output-field>
+                </div>
+               </lightning-record-view-form>
+            </lightning-card>
+              </template>
+              <template if:false={wiredRecord.data}>
+                <span class="slds-align_absolute-center;no-boat-height">
+                    {label.labelPleaseSelectABoat}
+                  </span>
+              </template> 
+                    
+        </lightning-tab>
+        <lightning-tab label={label.labelReviews}>
+         
+        </lightning-tab>
+         <lightning-tab label={label.labelAddReview}>
+            <c-boat-add-review-form rocord-id={boatId}></c-boat-add-review-form>
+        </lightning-tab>
+      </lightning-tabset>
+            
+ </template>

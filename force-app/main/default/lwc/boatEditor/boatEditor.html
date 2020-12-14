@@ -1,0 +1,23 @@
+<!-- boatEditor.html -->
+<template>
+    <lightning-card icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <template if:true={data}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={data}
+                    columns={columns}
+                    onsave={handleSave}
+                    draft-values={draftValues}
+                    hide-checkbox-column
+                    sorted-by={sortBy}
+                    sorted-direction={sortDirection}
+                    onsort={handleSortdata}>
+                </lightning-datatable>
+            </template>
+            <template if:true={boat.error}>
+                <!-- handle Apex error -->
+            </template>
+        </div>
+    </lightning-card>
+</template>
